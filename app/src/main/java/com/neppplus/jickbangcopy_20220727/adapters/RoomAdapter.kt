@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.neppplus.jickbangcopy_20220727.datas.RoomData
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.room_list_item.view.*
 
 class RoomAdapter(
@@ -24,9 +23,9 @@ class RoomAdapter(
 
         val roomData = mList[position]
 
-        row.priceTxt.text = roomData.Price.toString()
+        row.priceTxt.text = roomData.getFormattedPrice()
         row.addressTxt.text = "${ roomData.address }, "
-        row.levelTxt.text = roomData.level.toString()
+        row.levelTxt.text = roomData.getFormattedLevel()
         row.descriptionTxt.text = roomData.description
 
         return row

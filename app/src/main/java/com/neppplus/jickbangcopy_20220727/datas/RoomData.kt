@@ -1,5 +1,6 @@
 package com.neppplus.jickbangcopy_20220727.datas
 
+import android.util.Log
 import java.text.DecimalFormat
 
 class RoomData (

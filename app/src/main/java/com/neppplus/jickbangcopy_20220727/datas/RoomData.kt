@@ -1,6 +1,7 @@
 package com.neppplus.jickbangcopy_20220727.datas
 
 import android.util.Log
+import java.io.Serializable
 import java.text.DecimalFormat
 
 class RoomData (
@@ -8,7 +9,7 @@ class RoomData (
     val address : String,
     val level : Int,
     val description : String
-        ) {
+        ) : Serializable {
 
     fun getFormattedPrice() : String {
 //        어떤 모양(format)으로 꾸밀건지에 대한 변수화

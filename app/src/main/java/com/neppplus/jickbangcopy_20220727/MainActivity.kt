@@ -37,10 +37,12 @@ class MainActivity : AppCompatActivity() {
 //            한 방에 대한 정보를 가지고 Intent 실행
 //            한 방의 데이터 => 변수
             val roomData = mRoomList[i]  // 한 방의 정보를 담고있는 RoomData
-            myIntent.putExtra("price", roomData.price)
-                .putExtra("address", roomData.address)
-                .putExtra("level", roomData.level)
-                .putExtra("description", roomData.description)
+//            myIntent.putExtra("price", roomData.price)
+//                .putExtra("address", roomData.address)
+//                .putExtra("level", roomData.level)
+//                .putExtra("description", roomData.description)
+
+            myIntent.putExtra("roomData", roomData)
 
             startActivity(myIntent)
         }

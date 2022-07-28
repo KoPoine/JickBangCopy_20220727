@@ -1,8 +1,11 @@
 package com.neppplus.jickbangcopy_20220727
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.neppplus.jickbangcopy_20220727.adapters.RoomAdapter
 import com.neppplus.jickbangcopy_20220727.datas.RoomData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,5 +49,24 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(myIntent)
         }
+
+        roomListView.setOnItemLongClickListener { adapterView, view, position, l ->
+
+//            실제로 삭제 처리 할 건지? 경고문 팝업(AlertDialog)
+            val alert = AlertDialog.Builder(this)
+                .setTitle("제목")
+                .setMessage("물어볼 내용")
+                .setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+//                    확인버튼을 눌렀을때 해줄 로직
+                    mRoomList.removeAt(position)
+                    mRoomAdapter.notifyDataSetChanged()
+                    Toast.makeText(this, "목록이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                })
+                .setNegativeButton("취소", null)
+                .show()
+
+            return@setOnItemLongClickListener true
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.neppplus.jickbangcopy_20220727
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.neppplus.jickbangcopy_20220727.adapters.RoomAdapter
@@ -29,5 +30,19 @@ class MainActivity : AppCompatActivity() {
 
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRoomList)
         roomListView.adapter = mRoomAdapter
+
+//        ListView 클릭 이벤트 처리
+        roomListView.setOnItemClickListener { adapterView, view, i, l ->
+            val myIntent = Intent(this, DetailRoomActivity::class.java)
+//            한 방에 대한 정보를 가지고 Intent 실행
+//            한 방의 데이터 => 변수
+            val roomData = mRoomList[i]  // 한 방의 정보를 담고있는 RoomData
+            myIntent.putExtra("price", roomData.price)
+                .putExtra("address", roomData.address)
+                .putExtra("level", roomData.level)
+                .putExtra("description", roomData.description)
+
+            startActivity(myIntent)
+        }
     }
 }
